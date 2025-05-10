@@ -10,7 +10,10 @@ import androidx.navigation.compose.rememberNavController
 import com.nego.medshwari.data.UserDatabase
 import com.nego.medshwari.repository.UserRepository
 import com.nego.medshwari.ui.screens.about.AboutScreen
+import com.nego.medshwari.ui.screens.booking.BookingScreen
+import com.nego.medshwari.ui.screens.dashboard.DashboardScreen
 import com.nego.medshwari.ui.screens.home.HomeScreen
+import com.nego.medshwari.ui.screens.splash.SplashScreen
 import com.nego.medshwari.viewmodel.AuthViewModel
 import com.nego.zawadimart.ui.screens.auth.LoginScreen
 import com.nego.zawadimart.ui.screens.auth.RegisterScreen
@@ -20,7 +23,7 @@ import com.nego.zawadimart.ui.screens.auth.RegisterScreen
 fun AppNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = ROUT_HOME
+    startDestination: String = ROUT_SPLASH
 ) {
     val context = LocalContext.current
 
@@ -35,6 +38,20 @@ fun AppNavHost(
         composable(ROUT_ABOUT) {
             AboutScreen(navController)
         }
+
+        composable(ROUT_SPLASH) {
+            SplashScreen(navController)
+        }
+
+        composable(ROUT_BOOKING) {
+            BookingScreen(navController)
+        }
+
+        composable(ROUT_DASHBOARD) {
+            DashboardScreen(navController)
+        }
+
+
         //AUTHENTICATION
 
         // Initialize Room Database and Repository for Authentication
@@ -49,13 +66,7 @@ fun AppNavHost(
             }
         }
 
-        composable(ROUT_LOGIN) {
-            LoginScreen(authViewModel, navController) {
-                navController.navigate(ROUT_HOME) {
-                    popUpTo(ROUT_LOGIN) { inclusive = true }
-                }
-            }
-        }
+
 
 
     }

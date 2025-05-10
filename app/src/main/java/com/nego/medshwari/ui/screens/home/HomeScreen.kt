@@ -54,7 +54,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.nego.medshwari.ui.theme.newBlue
-import com.nego.medshwari.ui.theme.newLightBlue
+import com.nego.medshwari.ui.theme.newSkyBlue
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -127,7 +127,7 @@ fun HomeScreen(navController: NavController){
                 //Card
 
                 Card(
-                    colors = CardDefaults.cardColors(containerColor = newLightBlue),
+                    colors = CardDefaults.cardColors(containerColor = newSkyBlue),
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(150.dp),
@@ -157,7 +157,7 @@ fun HomeScreen(navController: NavController){
                 Spacer(modifier = Modifier.height(20.dp))
 
                 Card(
-                    colors = CardDefaults.cardColors(containerColor = newLightBlue),
+                    colors = CardDefaults.cardColors(containerColor = newSkyBlue),
                     modifier = Modifier
                         .fillMaxWidth()
                         .aspectRatio(1f),
