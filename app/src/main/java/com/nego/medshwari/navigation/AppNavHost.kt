@@ -7,14 +7,15 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.nego.medshwari.data.UserDatabase
 import com.nego.medshwari.repository.UserRepository
 import com.nego.medshwari.ui.screens.about.AboutScreen
+import com.nego.medshwari.ui.screens.appointment.AppointmentScreen
 import com.nego.medshwari.ui.screens.booking.BookingScreen
 import com.nego.medshwari.ui.screens.dashboard.DashboardScreen
+import com.nego.medshwari.ui.screens.doctor.DoctorScreen
 import com.nego.medshwari.ui.screens.home.HomeScreen
 import com.nego.medshwari.ui.screens.splash.SplashScreen
-import com.nego.medshwari.viewmodel.AuthViewModel
+import com.nego.medshwari.viewModel.AuthViewModel
 import com.nego.zawadimart.ui.screens.auth.LoginScreen
 import com.nego.zawadimart.ui.screens.auth.RegisterScreen
 
@@ -43,6 +44,10 @@ fun AppNavHost(
             SplashScreen(navController)
         }
 
+        composable(ROUT_APPOINTMENT) {
+            AppointmentScreen(navController)
+        }
+
         composable(ROUT_BOOKING) {
             BookingScreen(navController)
         }
@@ -51,23 +56,14 @@ fun AppNavHost(
             DashboardScreen(navController)
         }
 
-
-        //AUTHENTICATION
-
-        // Initialize Room Database and Repository for Authentication
-        val appDatabase = UserDatabase.getDatabase(context)
-        val authRepository = UserRepository(appDatabase.userDao())
-        val authViewModel: AuthViewModel = AuthViewModel(authRepository)
-        composable(ROUT_REGISTER) {
-            RegisterScreen(authViewModel, navController) {
-                navController.navigate(ROUT_LOGIN) {
-                    popUpTo(ROUT_REGISTER) { inclusive = true }
-                }
-            }
+        composable(ROUT_DOCTOR) {
+            DoctorScreen(navController)
         }
 
 
 
+        //AUTHENTICATION
 
-    }
-}
+
+            }
+        }

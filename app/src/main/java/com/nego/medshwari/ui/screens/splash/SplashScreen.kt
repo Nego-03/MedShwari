@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.nego.medshwari.R
+import com.nego.medshwari.navigation.ROUT_REGISTER
 import com.nego.medshwari.ui.theme.newBlue
 import com.nego.medshwari.ui.theme.newSkyBlue
 
@@ -31,7 +32,7 @@ import com.nego.medshwari.ui.theme.newSkyBlue
 fun SplashScreen(navController: NavController) {
     LaunchedEffect(Unit) {
         Handler(Looper.getMainLooper()).postDelayed({
-            navController.navigate("login") {
+            navController.navigate(ROUT_REGISTER) {
                 popUpTo("splash") { inclusive = true }
             }
         }, 2000)
